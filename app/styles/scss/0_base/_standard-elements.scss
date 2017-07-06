@@ -33,7 +33,9 @@ input {
 
 button {
   margin-top: $vertical-space * 4;
-  padding: 1.5rem 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.8rem;
+  line-height: 1.78;
   background-color: #e8f0f5;
   transition: background-color .3s ease;
 
