@@ -1,0 +1,70 @@
+button {
+  padding: 10px;
+  transition: background-color .3s ease;
+}
+
+button:hover {
+  background-color: #def;
+  cursor: pointer;
+}
+
+.slide-component {
+  position: relative;
+  width: 100%;
+  min-height: 75rem;
+  background-color: #666;
+  list-style-type: none;
+}
+
+.slide-component__slide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 46rem;
+  height: 50rem;
+  padding: 40px;
+  background-color: #fff;
+  opacity: 0;
+  transition: transform .5s ease, opacity .5s ease, background-color .5s ease;
+  transform: translate(-45%, -55%);
+}
+
+.slide-content {
+  transition: opacity .5s ease;
+}
+
+.slide-ready {
+  transform: translate(-35%, -65%);
+}
+
+.slide-visible {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.slide-passed-1,
+.slide-passed-2,
+.slide-passed-3 {
+  background-color: #def;
+}
+
+.slide-passed-1 {
+  opacity: .9;
+  transform: translate(-55%, -45%);
+}
+
+.slide-passed-2 {
+  opacity: .65;
+  transform: translate(-60%, -40%);
+}
+
+.slide-passed-3 {
+  transform: translate(-65%, -35%);
+/*   display: none; do this with js */
+}
+
+.slide-passed-1 .slide-content,
+.slide-passed-2 .slide-content,
+.slide-passed-3.slide-content {
+  opacity: 0;
+}

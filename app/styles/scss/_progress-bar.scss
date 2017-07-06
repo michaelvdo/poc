@@ -1,0 +1,172 @@
+// variables
+$step-min-width: 200px;
+$icon-container-diameter: 37px;
+$progress-line-height: 3px;
+$progress-line-gap: 8px;
+
+button {
+  padding: 10px;
+  transition: background-color .3s ease;
+}
+
+button:hover {
+  background-color: #def;
+  cursor: pointer;
+}
+
+/* ul */
+.progress-bar {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #def;
+  list-style-type: none;
+}
+
+/* li */
+.progress-bar__step {
+  position: relative;
+  display: inline-block;
+  min-width: $step-min-width;
+  text-align: center;
+}
+
+/* lines between steps */
+.progress-bar__step:before,
+.progress-bar__step:after {
+  /* calculation for width of the line based on the size of the step, icon-container and the */
+  /* designed space between the line and the icon-containers */
+  $progress-line-width: calc($step-min-width - $icon-container-diameter - ($progress-line-gap * 2));
+
+  position: absolute;
+  top: calc(($icon-container-diameter / 2) - ($progress-line-height / 2));
+  left: calc($step-min-width - ($progress-line-width / 2));
+  width: $progress-line-width;
+  height: $progress-line-height;
+  content: '';
+}
+
+.progress-bar__step:last-of-type:before,
+.progress-bar__step:last-of-type:after {
+  content: none;
+}
+
+/* non-filled-up line */
+.progress-bar__step:before {
+  background-color: darkblue;
+}
+
+/* filled-up line */
+.progress-bar__step:after {
+  width: 0;
+  background-color: limegreen;
+  transition: width .5s ease;
+}
+
+.progress-bar__step.is-complete:after {
+  width: $progress-line-width;
+}
+
+/* circle w/ icon */
+.progress-bar__icon-container {
+  position: relative;
+  width: $icon-container-diameter;
+  height: $icon-container-diameter;
+  margin: 0 auto 10px auto;
+  border-radius: 100%;
+  color: #fff;
+  background-color: darkblue;
+  transition: background-color .5s ease;
+  animation: scaleBounceIntro 0s cubic-bezier(.53,1,.72,.64) 0s 1 normal forwards;
+}
+
+.is-ready-for-animation .progress-bar__icon-container {
+  animation: scaleBounceIntro .6s cubic-bezier(.53,1,.72,.64) 0s 1 normal forwards;
+}
+
+.is-complete .progress-bar__icon-container {
+  background-color: limegreen;
+  animation: scaleBounce .6s cubic-bezier(.53,1,.72,.64) 0s 1 normal forwards;
+}
+
+.progress-bar__icon-container:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: attr(data-step);
+  animation: toStepIcon 0s linear 0s 1 normal forwards;
+}
+
+.is-ready-for-animation .progress-bar__icon-container:after {
+  animation: toStepIcon .6s linear 0s 1 normal forwards;
+}
+
+.is-complete .progress-bar__icon-container:after {
+  animation: toSuccessIcon .6s linear 0s 1 normal forwards;
+}
+
+.progress-bar__label {
+  color: darkblue;
+  transition: color .5s ease;
+}
+
+.is-complete .progress-bar__label {
+  color: limegreen;
+}
+
+// keyframes
+@keyframes scaleBounceIntro {
+  0% {
+    transform: scale(1);
+  }
+  49% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleBounce {
+  0% {
+    transform: scale(1);
+  }
+  49% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes toSuccessIcon {
+  0% {
+    content: attr(data-step);
+  }
+  50%, 100% {
+    content: attr(data-step-complete);
+  }
+}
+
+@keyframes toStepIcon {
+  0% {
+    content: attr(data-step-complete);
+  }
+  50%, 100% {
+    content: attr(data-step);
+  }
+}
