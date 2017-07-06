@@ -3,6 +3,11 @@
 @import 'normalize';
 
 // Basic styles for testing purposes
-@import 'scss/reset';
-@import 'scss/card-slider';
-@import 'scss/progress-bar';
+@import 'scss/0_base/global-variables';
+@import 'scss/0_base/reset';
+@import 'scss/0_base/fonts';
+@import 'scss/0_base/standard-elements';
+
+@import 'scss/1_components/header';
+@import 'scss/1_components/card-slider';
+@import 'scss/1_components/progress-bar';

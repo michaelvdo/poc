@@ -17,9 +17,12 @@ body {
   width: 100%;
   min-width: 320px;
   height: 100%;
+  font-family: 'FFDINWeb', sans-serif;
 }
 
 .viewport {
   width: 100%;
+  min-height: 100vh;
+  background-color: $color-primary;
   overflow: hidden;
 }
