@@ -15,7 +15,6 @@
   background-color: #fff;
   opacity: 0;
   transition: transform .5s ease, opacity .5s ease, background-color .5s ease;
-  // transform: translate(-45%, -55%);
   transform: translate(-40%, -50%) scale(1);
 }
 
@@ -24,7 +23,6 @@
 }
 
 .slide-ready {
-  // transform: translate(-35%, -65%);
   transform: translate(-40%, -50%) scale(1);
 }
 
@@ -37,14 +35,12 @@
 .slide-passed-1 {
   opacity: .9;
   background-color: #d3e2eb;
-  // transform: translate(-55%, -45%);
   transform: translate(-60%, -50%) scale(.9);
 }
 
 .slide-passed-2 {
   opacity: .65;
   background-color: #dde9f0;
-  // transform: translate(-60%, -40%);
   transform: translate(-70%, -50%) scale(.8);
 }
 
