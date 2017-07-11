@@ -7,7 +7,7 @@
 
 .slide-component__slide {
   position: absolute;
-  top: 50%;
+  top: 42%;
   left: 50%;
   width: 46rem;
   height: 50rem;
@@ -59,7 +59,7 @@
 
   .is-submitted & {
     background-color: #9dce40;
-    transform-origin: center;
+    transform-origin: top;
     transform: translate(-50%, -50%) scale(1, .5);
     transition: transform .5s ease .2s, opacity .5s ease, background-color 1s ease 5s;
   }
