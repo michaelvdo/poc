@@ -9,14 +9,16 @@
   var elements = {},
       selectors = {
         container: '[data-slide-component]',
-        slide: '[data-slide]'
+        slide: '[data-slide]',
+        loader: '[data-slide-loader]'
       },
       classes = {
         1: 'slide-ready',
         2: 'slide-visible',
         3: 'slide-passed-1',
         4: 'slide-passed-2',
-        5: 'slide-passed-3'
+        5: 'slide-passed-3',
+        submit: 'is-submitted'
       },
       states = {
         numberOfStates: 5,
@@ -82,7 +84,7 @@
       }
     }
     currentSlide++;
-    window.SUEZ.progressBar.next();
+    window.SuezApp.progressBar.next();
   }
 
   function previous() {
@@ -98,13 +100,30 @@
       }
       currentSlide--;
     }, 250);
-    window.SUEZ.progressBar.previous();
+    window.SuezApp.progressBar.previous();
+  }
+
+  function submit() {
+    setTimeout(function() {
+      elements.loader.style.display = 'block';
+    }, 1000);
+    // Add class to data-slide-component to hide all passed but still visible slides behind the current slide, and to animate the current slide to a success slide.
+    elements.container.classList.add(classes.submit);
+    // Show loader
+    setTimeout(function() {
+      elements.loader.style.opacity = 0;
+    }, 2000);
+    // After animating, the css animations will reveal the 'completed' message. The progress-bar should be updated accordingly.
+    setTimeout(function() {
+      window.SuezApp.progressBar.next();
+    }, 4000);
   }
 
   //  init functions
   function initElements() {
     elements.container = document.querySelector(selectors.container);
     elements.slides = elements.container ? [...elements.container.querySelectorAll(selectors.slide)] : null;
+    elements.loader = elements.container ? elements.container.querySelector(selectors.loader) : null;
   }
 
   function initSlides() {
@@ -126,6 +145,9 @@
       }
       if ('slidePrevious' in event.target.dataset && event.target.closest('.' + classes[2])) {
         previous();
+      }
+      if ('slideSubmit' in event.target.dataset && event.target.closest('.' + classes[2])) {
+        submit();
       }
     });
   }

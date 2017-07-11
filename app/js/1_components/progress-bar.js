@@ -46,9 +46,9 @@
     addEventListeners();
     addReadyForAnimationClass();
 
-    // add methods to global SUEZ object for use in other modules
-    window.SUEZ = window.SUEZ || {};
-    window.SUEZ.progressBar = {
+    // add methods to global SuezApp object for use in other modules
+    window.SuezApp = window.SuezApp || {};
+    window.SuezApp.progressBar = {
       next: next,
       previous: previous
     };
