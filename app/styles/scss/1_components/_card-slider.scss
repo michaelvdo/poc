@@ -38,18 +38,25 @@
   transform: translate(-50%, -50%) scale(1, 2);
 }
 
-.slide-complete-icon {
+.slide-complete-content {
   position: absolute;
   top: 50%;
   left: 50%;
   color: #fff;
+  text-align: center;
   transition: transform 1s ease 5s;
   transform: translate(-50%, -50%) scale(0);
 
   .is-submitted & {
     // scale(1, 2) is used to offset the slide's scale(1, .5)
-    transform: translate(-50%, -50%) scale(5, 10);
+    transform: translate(-50%, -50%) scale(1, 2);
   }
+}
+
+.slide-complete-icon {
+  position: relative;
+  top: .5rem;
+  transform: scale(3, 3);
 }
 
 .slide-visible {
